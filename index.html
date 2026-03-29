@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>David Reptin · Student & Trainee Portfolio</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f0f9ff;
+      color: #132e42;
+      transition: background 0.3s ease, color 0.2s ease;
+      scroll-behavior: smooth;
+    }
+
+    /* DARK THEME — blended cool tones */
+    body.dark {
+      background: #0a141f;
+      color: #e7f0f8;
+    }
+
+    body.dark .card,
+    body.dark .journey-card,
+    body.dark .skill-card,
+    body.dark .contact-card,
+    body.dark .stat-card {
+      background: #122b38;
+      border-color: #2a4b5e;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    body.dark .glass-nav {
+      background: rgba(10, 26, 36, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #2a5568;
+    }
+
+    body.dark .btn-outline {
+      border-color: #5d9ec0;
+      color: #cae3f5;
+    }
+
+    body.dark .btn-outline:hover {
+      background: #1f4d64;
+    }
+
+    body.dark .social-icon {
+      background: #1b3f50;
+      color: #cee9ff;
+    }
+
+    body.dark .badge-light {
+      background: #1f465a;
+      color: #cae2f2;
+    }
+
+    body.dark .timeline-dot {
+      background: #4797bf;
+      box-shadow: 0 0 0 3px #1f546e;
+    }
+
+    body.dark .section-title:after {
+      background: #60b0d4;
+    }
+
+    /* container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* NAVIGATION — modern glass */
+    .glass-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(100, 180, 210, 0.35);
+      padding: 16px 0;
+      transition: all 0.2s;
+    }
+
+    .nav-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo {
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(130deg, #1f6d93, #48a9d6);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    body.dark .logo {
+      background: linear-gradient(130deg, #7fc3e7, #b3defa);
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #1d6285;
+      transition: 0.2s;
+    }
+
+    body.dark .nav-links a {
+      color: #c8e3f5;
+    }
+
+    .nav-links a:hover {
+      color: #0f7eb0;
+      transform: translateY(-2px);
+    }
+
+    .theme-toggle {
+      background: rgba(140, 200, 230, 0.35);
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      width: 44px;
+      height: 44px;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s;
+      color: #1d6c93;
+    }
+
+    body.dark .theme-toggle {
+      background: #2e5b72;
+      color: #ffeaac;
+    }
+
+    /* HERO SECTION with animation */
+    .hero {
+      padding: 60px 0 40px;
+    }
+
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 48px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hero-content {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .hero-badge {
+      background: #cbe9f7;
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 60px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #166d94;
+      margin-bottom: 20px;
+      animation: fadeUp 0.7s ease;
+    }
+
+    .hero-content h1 {
+      font-size: 3.1rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 18px;
+      animation: fadeUp 0.7s 0.05s both;
+    }
+
+    .highlight {
+      color: #2580a8;
+      position: relative;
+    }
+
+    body.dark .highlight {
+      color: #7bc2e6;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: #2e556e;
+      max-width: 520px;
+      margin-bottom: 28px;
+      animation: fadeUp 0.7s 0.1s both;
+    }
+
+    body.dark .hero-desc {
+      color: #c7ddee;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.7s 0.15s both;
+    }
+
+    .btn-primary {
+      background: #2c89b0;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      transition: 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      background: #1f6f92;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 22px -8px rgba(44, 137, 176, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #2c89b0;
+      padding: 10px 26px;
+      border-radius: 40px;
+      font-weight: 500;
+      color: #1e6a8f;
+      transition: 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-image {
+      flex: 0.9;
+      display: flex;
+      justify-content: center;
+    }
+
+    .image-frame {
+      width: 260px;
+      height: 260px;
+      border-radius: 38% 62% 70% 30% / 44% 36% 64% 56%;
+      background: linear-gradient(135deg, #b9def0, #8dc9e8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+      animation: float 5s infinite ease-in-out;
+    }
+
+    body.dark .image-frame {
+      background: linear-gradient(135deg, #245f7a, #1b4c63);
+    }
+
+    .image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* default placeholder if no image uploaded — but user can replace */
+    .placeholder-avatar {
+      width: 100%;
+      height: 100%;
+      background: #b2def5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: #1f6d8f;
+    }
+
+    /* journey section */
+    .section {
+      padding: 70px 0 50px;
+    }
+
+    .section-title {
+      font-size: 2.1rem;
+      font-weight: 700;
+      margin-bottom: 48px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 65px;
+      height: 4px;
+      background: #4ba9d1;
+      border-radius: 4px;
+    }
+
+    /* journey timeline style */
+    .journey-card {
+      background: white;
+      border-radius: 32px;
+      padding: 32px;
+      border: 1px solid #daecf5;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+      transition: all 0.25s;
+    }
+
+    .journey-text {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .info-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .info-item {
+      background: #e7f3fa;
+      padding: 12px 20px;
+      border-radius: 60px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    body.dark .info-item {
+      background: #1b4458;
+    }
+
+    /* skills section */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin: 30px 0 20px;
+    }
+
+    .skill-card {
+      background: white;
+      border-radius: 28px;
+      padding: 18px 24px;
+      flex: 1 1 180px;
+      text-align: center;
+      border: 1px solid #cde5f0;
+      transition: all 0.2s;
+    }
+
+    .skill-card i {
+      font-size: 2.2rem;
+      color: #3182a8;
+      margin-bottom: 12px;
+    }
+
+    .skill-card span {
+      font-weight: 600;
+      display: block;
+    }
+
+    .badge-light {
+      background: #dff0f8;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    /* stats */
+    .stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      margin: 40px 0;
+      justify-content: space-between;
+    }
+
+    .stat-card {
+      background: white;
+      border-radius: 2rem;
+      padding: 20px 28px;
+      flex: 1;
+      min-width: 140px;
+      text-align: center;
+      border: 1px solid #cde3ef;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #2680a8;
+    }
+
+    /* contact section */
+    .contact-card {
+      background: white;
+      border-radius: 2rem;
+      padding: 40px 36px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 28px;
+      border: 1px solid #cee6f2;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .social-icon {
+      background: #e5f2f9;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      color: #226f94;
+      transition: 0.2s;
+      text-decoration: none;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 30px 0 40px;
+      border-top: 1px solid #cce3ef;
+      margin-top: 20px;
+    }
+
+    /* animations */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 780px) {
+      .hero-grid {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      .hero-content h1 {
+        font-size: 2.4rem;
+      }
+      .btn-group {
+        justify-content: center;
+      }
+      .section-title:after {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+      }
+      .section-title {
+        text-align: center;
+        display: block;
+      }
+      .contact-card {
+        flex-direction: column;
+        text-align: center;
+      }
+      .stats-row {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="glass-nav">
+  <div class="container nav-flex">
+    <div class="logo"><i class="fas fa-code"></i> David.Reptin</div>
+    <div class="nav-links">
+      <a href="#journey">Journey</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-toggle" id="darkModeToggle" aria-label="Dark mode"><i class="fas fa-moon"></i></button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <!-- Hero Section with image upload capability -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-sparkle"></i> 15 y/o · student & trainee</div>
+        <h1>David <span class="highlight">Reptin</span><br>building my future with code & curiosity</h1>
+        <p class="hero-desc">Licerio Antiporda student · Auxiliary Technology trainee at Lyceum of Aparri. Passionate about web basics, MS tools, and creative problem-solving.</p>
+        <div class="btn-group">
+          <a href="#journey" class="btn-primary"><i class="fas fa-compass"></i> my journey</a>
+          <a href="#contact" class="btn-outline"><i class="fas fa-paper-plane"></i> connect</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="image-frame" id="imageFrame">
+          <!-- Default icon if no image selected, but user can upload their own image via a hidden input -->
+          <div id="avatarPreview" class="placeholder-avatar">
+           <img src="uno (1).png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- Journey Section (personal story) -->
+  <section id="journey" class="section">
+    <div class="container">
+      <h2 class="section-title animate-on-scroll">my journey</h2>
+      <div class="journey-card animate-on-scroll">
+        <div class="journey-text">
+          <p><strong>My name is David Reptin</strong>, a 15-year-old student currently living in Centro. At a young age, I have already begun building a strong foundation for my future through education and practical training. I am currently studying at <strong>Licerio Antiporda</strong>, where I continue to develop my academic knowledge and personal skills.</p>
+          <br>
+          <p>In addition to my regular studies, I am also a trainee at <strong>Lyceum of Aparri</strong> as an Auxiliary Technology student. This experience has given me the opportunity to explore and learn valuable technological skills that are essential in today’s modern world. Through this training, I have gained knowledge in using <strong>Microsoft Word, PowerPoint, and Excel</strong>. These tools have helped me improve my ability to create documents, presentations, and spreadsheets efficiently.</p>
+          <br>
+          <p>Moreover, I have also been introduced to basic programming and web development. I have learned how to use <strong>Visual Studio Code</strong> and understand the fundamentals of <strong>HTML and CSS</strong>. These skills allow me to create simple web pages and understand how websites are designed and structured. Learning these technologies has sparked my interest in the field of information technology and inspired me to continue improving my skills.</p>
+          <br>
+          <p>Being both a student and a trainee is not always easy, but I am determined to balance my responsibilities and continue learning. I believe that the knowledge and experience I am gaining now will help me achieve my goals in the future. Step by step, I am preparing myself to become skilled, capable, and ready for greater opportunities ahead.</p>
+        </div>
+        <div class="info-grid">
+          <div class="info-item"><i class="fas fa-map-marker-alt"></i> Centro</div>
+          <div class="info-item"><i class="fas fa-school"></i> Licerio Antiporda</div>
+          <div class="info-item"><i class="fas fa-laptop-code"></i> Lyceum of Aparri Trainee</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills & Tools (modern & blended light blue) -->
+  <section id="skills" class="section">
+    <div class="container">
+      <h2 class="section-title animate-on-scroll">tools & expertise</h2>
+      <div class="skills-grid">
+        <div class="skill-card animate-on-scroll"><i class="fab fa-microsoft"></i><span>MS Office Suite</span><div class="badge-light" style="margin-top: 8px;">Word, PPT, Excel</div></div>
+        <div class="skill-card animate-on-scroll"><i class="fab fa-html5"></i><span>HTML5 & CSS3</span><div class="badge-light" style="margin-top: 8px;">responsive layouts</div></div>
+        <div class="skill-card animate-on-scroll"><i class="fab fa-css3-alt"></i><span>Styling & Design</span><div class="badge-light" style="margin-top: 8px;">flex/grid</div></div>
+        <div class="skill-card animate-on-scroll"><i class="fas fa-code"></i><span>VS Code</span><div class="badge-light" style="margin-top: 8px;">web editing</div></div>
+      </div>
+      <div style="background: rgba(100, 180, 210, 0.1); border-radius: 28px; padding: 24px; margin-top: 20px; text-align: center; border-left: 5px solid #4ba9d1;">
+        <i class="fas fa-quote-left" style="margin-right: 10px; color: #3282a8;"></i> "I blend academic discipline with tech curiosity — every line of code and spreadsheet brings me closer to my goals."
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Social -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="contact-card animate-on-scroll">
+        <div>
+          <h3 style="font-size: 1.8rem; font-weight: 700;">Let's connect ✨</h3>
+          <p style="margin-top: 8px;">Open to learning, collaborations, or just a chat about tech & growth.</p>
+          <div style="margin-top: 20px;"><i class="fas fa-envelope" style="color: #2c89b0;"></i> david.reptin@student.dev</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>© 2025 David Reptin — designed with 💙 light blue vibes & smart animations</p>
+  </div>
+</footer>
+
+<script>
+  // DARK MODE smart toggle (localStorage + system)
+  const toggle = document.getElementById('darkModeToggle');
+  const stored = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+  let isDark = false;
+  if (stored === 'dark') isDark = true;
+  else if (stored === 'light') isDark = false;
+  else isDark = prefersDark.matches;
+  
+  function setTheme(dark) {
+    if (dark) {
+      document.body.classList.add('dark');
+      if(toggle) toggle.innerHTML = '<i class="fas fa-sun"></i>';
+    } else {
+      document.body.classList.remove('dark');
+      if(toggle) toggle.innerHTML = '<i class="fas fa-moon"></i>';
+    }
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+  }
+  setTheme(isDark);
+  if(toggle) {
+    toggle.addEventListener('click', () => {
+      setTheme(!document.body.classList.contains('dark'));
+    });
+  }
+  prefersDark.addEventListener('change', (e) => {
+    if(!localStorage.getItem('theme')) setTheme(e.matches);
+  });
+
+
+
+  // SCROLL ANIMATION (reveal on scroll)
+  const animatedElements = document.querySelectorAll('.animate-on-scroll');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  animatedElements.forEach(el => observer.observe(el));
+
+  // smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if(targetId === "#") return;
+      const target = document.querySelector(targetId);
+      if(target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.pushState(null, null, targetId);
+      }
+    });
+  });
+</script>
+</body>
+</html>
